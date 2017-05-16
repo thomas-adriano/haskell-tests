@@ -18,3 +18,13 @@ removeUppercase s = [x | x <- s, x `elem` ['a'..'z']]
 
 factorial' 0 = 1
 factorial' n = n * factorial' (n-1)
+
+quicksort' :: (Ord a) => [a] -> [a]
+quicksort' [] = []
+quicksort' (s:xs) = quicksort' [x|x <- xs,x < s]
+    ++ [s] ++
+    quicksort' [x|x <- xs,x >= s]
+
+max' [a] = a
+max' (a : t) = if (a > (max' t)) then a
+    else (max' t)
